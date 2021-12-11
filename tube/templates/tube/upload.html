@@ -1,0 +1,14 @@
+{% extends "tube/layout.html" %}
+
+{% block body %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            {% csrf_token %}
+            {{video_form.as_table}}
+            {{tags_form.as_table}}
+        </table>
+        <button type="submit">upload</button>
+    </form>
+{% endblock %}
+
+

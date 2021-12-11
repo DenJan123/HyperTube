@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if title %}{{ title }}{% else %}HyperTube{% endif %}</title>
+</head>
+<body>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <h2>Welcome, {{ user.username }}</h2>
+    <a target="_blank" href="{% url 'logout' %}">Logout</a>
+{% else %}
+    <h2>Welcome, anonymous </h2>
+    {% if request.path %}
+        <a href="{% url 'login' %}?next={{request.path}}" target="_blank">Log in</a>
+    {% else %}
+        <a href="{% url 'login' %}" target="_blank" target="_blank">Log in</a>
+    {% endif %}
+{% endif %}
+
+<main>
+    {% block body %}{% endblock %}
+</main>
+<!--links to pass the tests-->
+<a href="/tube/" target="_blank">Main page</a>
+<a href="/login/" target="_blank">Login</a>
+</body>
+</html>

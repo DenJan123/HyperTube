@@ -1,0 +1,13 @@
+{% extends "tube/layout.html" %}
+
+{% block body %}
+
+<form method="post" action="">{% csrf_token %}
+    <table>{{ form.as_table }}</table>
+    {% if request.GET.next %}
+    <input type="hidden" value="{{request.GET.next }}" name="next"/>
+        {% endif %}
+    <button type="submit">Send</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'tube/layout.html' %}
+
+{% block body %}
+<p>{{video.title}}</p>
+<div>
+    <video width="640" height="480" controls class="video-js" preload="auto">
+        <source src="{% url 'stream' video_file_name %}" type="video/mp4">
+    </video>
+</div>
+<script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+{% for tag in tags %}
+<a target="_blank" href="/tube/?tag={{tag.name}}">#{{tag.name}}</a>
+{% endfor %}
+{% endblock %}

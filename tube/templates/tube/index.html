@@ -1,0 +1,21 @@
+{% extends "tube/layout.html" %}
+
+{% block body %}
+
+<h2>Hypertube</h2>
+<a href="/login/?next={{request.path}}" target="_blank">Log in</a>
+<a href="/login/" target="_blank">Log in</a>
+<form action="{% url 'index' %}" method="get">
+    <input class="search" type="text" name="q" placeholder="">
+    <button type="submit">search</button>
+</form>
+<p>{{videos.count}} videos </p>
+{% for video in videos %}
+<div>
+<a href="/tube/watch/{{video.id}}/">{{video.title}}</a>
+</div>
+{% endfor %}
+<div>
+    <a href="/tube/upload/" target="_blank">Upload video</a>
+</div>
+{% endblock %}

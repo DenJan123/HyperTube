@@ -1,0 +1,10 @@
+{% extends "tube/layout.html" %}
+
+{% block body %}
+
+<form method="post" action="">{% csrf_token %}
+  <table>{{ form.as_table }}</table>
+  <button type="submit">Send</button>
+</form>
+
+{% endblock %}
